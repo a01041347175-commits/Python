@@ -32,4 +32,3 @@ except KeyboardInterrupt:
     print("종료. 감지된 횟수:", count)
 
 # ⭐ 도전: sleep_ms(500) 을 sleep_ms(50) 으로 줄이면 얼마나 덜 놓칠까? 그래도 놓치는 순간이 있을까?
-# a)sleep_ms(50)으로 줄이면 놓치는 순간이 적어지지만 버튼을 누르는 타이밍에 따라 놓치는 순간은 발생할수 있다.
