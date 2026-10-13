@@ -1,7 +1,7 @@
 import bluetooth, time
 from machine import Pin, Timer
 
-NAME = "CAM-00"                                 # ★ 내 번호로 바꾼다
+NAME = "CAM-DW502-박지후"                                 # ★ 내 번호로 바꾼다
 btn = Pin(0, Pin.IN, Pin.PULL_UP)               # 누르면 0
 red = Pin(33, Pin.OUT, value=1)                 # 빨간 LED: 0 이 켜짐
 
@@ -54,7 +54,7 @@ def task_10ms():
     now = btn.value()
     if btn_last == 1 and now == 0:              # 눌린 순간만 잡는다
         count += 1
-        msg = "누름 %d" % count
+        msg =  "박지후 %d" % count
         print(msg)
         if conn is not None:
             ble.gatts_notify(conn, tx_handle, msg.encode())   # 폰으로 글자를 보낸다

@@ -1,7 +1,7 @@
 import bluetooth, time
 from machine import Pin
 
-NAME = "CAM-00"                                 # ★ 내 번호로 바꾼다 (예: CAM-07)
+NAME = "CAM-DW502-박지후"                                 # ★ 내 번호로 바꾼다 (예: CAM-07)
 red = Pin(33, Pin.OUT, value=1)                 # 빨간 LED: 0 이 켜짐
 
 def make_payload(name):
