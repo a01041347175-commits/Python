@@ -1,0 +1,20 @@
+import network
+
+wlan = network.WLAN(network.STA_IF)             # 보드를 '손님(STA)' 모드로 만든다
+wlan.active(True)                               # 무선 안테나를 켠다
+
+print("주변 와이파이를 찾는 중... (몇 초 걸립니다)")
+found = wlan.scan()                             # 결과: (이름, 주소, 채널, 신호, 보안, 숨김)
+found.sort(key=lambda w: w[3], reverse=True)    # 신호가 센 순서로 (0 에 가까울수록 셈)
+
+AUTH = ["열림", "WEP", "WPA", "WPA2", "WPA/WPA2", "WPA2-기업", "WPA3", "WPA2/3"]
+
+for ssid, bssid, channel, rssi, auth, hidden in found:
+    name = ssid.decode() or "(숨김)"
+    kind = AUTH[auth] if auth < len(AUTH) else str(auth)
+    print("%-22s 채널 %2d  신호 %4d dBm  %s" % (name, channel, rssi, kind))
+
+print("총", len(found), "개를 찾았습니다")
+wlan.active(False)
+
+# ⭐ 도전: 신호가 가장 센 와이파이 이름만 한 줄로 찍어 보자. (힌트: found[0])
