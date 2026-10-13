@@ -7,6 +7,7 @@ flash = PWM(Pin(4), freq=1000, duty=0)          # 플래시 밝기 0~1023 (직�
 red = Pin(33, Pin.OUT, value=1)                 # 빨간 LED: 0 이 켜짐
 BRIGHT = 60										# 약한 밝기
 BRIGHT2 = 150
+BRIGHT3 = 400
 
 # ── 블루투스: 보드→폰(TX) 통로와 폰→보드(RX) 통로를 둘 다 만든다 ──
 UART = bluetooth.UUID("6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
@@ -74,6 +75,10 @@ def task_10ms():
             flash.duty(BRIGHT2)
             red.value(0)
             send("플래시 밝아짐")
+        elif command == "3":
+            flash.duty(BRIGHT3)
+            red.value(0)
+            send("플래시 가장 밝음")
         else:
             send("모르는 명령: " + command)
         command = ""                            # 처리했으니 포스트잇을 뗀다
