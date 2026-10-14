@@ -10,7 +10,10 @@ found.sort(key=lambda w: w[3], reverse=True)    # 신호가 센 순서로 (0 에
 AUTH = ["열림", "WEP", "WPA", "WPA2", "WPA/WPA2", "WPA2-기업", "WPA3", "WPA2/3"]
 
 for ssid, bssid, channel, rssi, auth, hidden in found:
-    name = ssid.decode() or "(숨김)"
+    try:
+        name = ssid.decode() or "(숨김)"
+    except UnicodeError:						#옛 공유기의 특수한 이름은 글자로 못 바꾼다.
+        name = "(읽을 수 없는 이름)"
     kind = AUTH[auth] if auth < len(AUTH) else str(auth)
     print("%-22s 채널 %2d  신호 %4d dBm  %s" % (name, channel, rssi, kind))
 

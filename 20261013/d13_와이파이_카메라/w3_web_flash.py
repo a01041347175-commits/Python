@@ -10,6 +10,8 @@ red = Pin(33, Pin.OUT, value=1)
 
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
+time.sleep_ms(1000)
+wlan.active(True)
 wlan.connect(SSID, PASSWORD)
 while not wlan.isconnected():
     time.sleep_ms(300)

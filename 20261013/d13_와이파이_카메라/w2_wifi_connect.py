@@ -1,13 +1,15 @@
 import network, time
 from machine import Pin
 
-SSID = "여기에_와이파이_이름"                   # ★ 화면에 안내된 와이파이 이름으로 바꾼다
-PASSWORD = "여기에_비밀번호"                    # ★ 화면에 안내된 비밀번호로 바꾼다
+SSID = "DW502iptime2G"                   # ★ 화면에 안내된 와이파이 이름으로 바꾼다
+PASSWORD = "dw502502"                    # ★ 화면에 안내된 비밀번호로 바꾼다
 
 red = Pin(33, Pin.OUT, value=1)                 # 빨간 LED: 0 이 켜짐
 
 wlan = network.WLAN(network.STA_IF)
-wlan.active(True)
+wlan.active(True)								# 앞 실행에서 남은 접속 시도를 지우려고
+time.sleep_ms(1000)								# 껐다가 1초 쉬고
+wlan.active(True)								# 다시 켠다
 wlan.connect(SSID, PASSWORD)                    # 공유기에 접속을 요청한다
 
 print("연결 중", end="")
