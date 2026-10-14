@@ -18,6 +18,7 @@ for ssid, bssid, channel, rssi, auth, hidden in found:
     print("%-22s 채널 %2d  신호 %4d dBm  %s" % (name, channel, rssi, kind))
 
 print("총", len(found), "개를 찾았습니다")
+print("가장 신호가 강한 와이파이", found[0][0])
 wlan.active(False)
 
 # ⭐ 도전: 신호가 가장 센 와이파이 이름만 한 줄로 찍어 보자. (힌트: found[0])
