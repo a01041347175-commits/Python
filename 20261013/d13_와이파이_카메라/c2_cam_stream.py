@@ -1,13 +1,15 @@
 import network, socket, time
 from camera import Camera, FrameSize, PixelFormat
 
-SSID = "여기에_와이파이_이름"                   # ★ 화면에 안내된 와이파이 이름으로 바꾼다
-PASSWORD = "여기에_비밀번호"                    # ★ 화면에 안내된 비밀번호로 바꾼다
+SSID = "DW502iptime2G"                   # ★ 화면에 안내된 와이파이 이름으로 바꾼다
+PASSWORD = "dw502502"                    # ★ 화면에 안내된 비밀번호로 바꾼다
 
 SIZE = FrameSize.QVGA                           # 화면 크기: QQVGA(작다) < QVGA < VGA(크다)
 QUALITY = 50                                    # 화질 (높을수록 선명하고 느리다)
 
 wlan = network.WLAN(network.STA_IF)
+wlan.active(False)
+time.sleep_ms(1000)
 wlan.active(True)
 wlan.connect(SSID, PASSWORD)
 while not wlan.isconnected():
