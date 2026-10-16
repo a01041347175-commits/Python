@@ -3,11 +3,11 @@ from camera import Camera, FrameSize, PixelFormat
 
 machine.freq(240000000)                         # 보드 두뇌(CPU) 속도를 가장 빠른 240MHz 로 맞춘다
 
-SSID = "여기에_와이파이_이름"                   # ★ 화면에 안내된 와이파이 이름으로 바꾼다
-PASSWORD = "여기에_비밀번호"                    # ★ 화면에 안내된 비밀번호로 바꾼다
+SSID = "DW502iptime2G"                   # ★ 화면에 안내된 와이파이 이름으로 바꾼다
+PASSWORD = "dw502502"                    # ★ 화면에 안내된 비밀번호로 바꾼다
 
 SIZE = FrameSize.QVGA                           # 크기: QQVGA < QVGA < VGA < XGA (XGA 는 OV2640 만, 느림)
-QUALITY = 85                                    # 화질 0~100 (높을수록 선명하고 파일이 큼, 95 까지)
+QUALITY = 80                                    # 화질 0~100 (높을수록 선명하고 파일이 큼, 95 까지)
 
 wlan = network.WLAN(network.STA_IF)
 wlan.active(False)                              # 앞 실행에서 남은 접속 시도를 지우려고
