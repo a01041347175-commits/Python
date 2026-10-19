@@ -5,7 +5,8 @@ adc = ADC(Pin(2))
 
 try:
     while True:
-        voltage = adc.read()/4095*5.02*0.96
+        adc_value = adc.read()
+        voltage = adc_value/4095*5.02*0.96
         
         print(voltage)
 

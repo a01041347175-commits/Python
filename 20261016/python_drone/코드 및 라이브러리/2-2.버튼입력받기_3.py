@@ -1,6 +1,8 @@
 from machine import Pin
 import time
 
+
+cnt = 0
 key = Pin(0, Pin.IN, Pin.PULL_UP)
 prev_key = key.value() 
 
@@ -11,6 +13,9 @@ try:
             prev_key = curr_key
             if curr_key == 0:
                 print("버튼 눌림",curr_key)
+                cnt += 1
+            else :
+                print("버튼 회복", cnt)
             time.sleep(0.1)
 
 except KeyboardInterrupt:

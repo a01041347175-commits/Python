@@ -15,12 +15,12 @@ try:
         print("0")
         time.sleep(3)
         
-        M1_motor.duty(100)
-        M2_motor.duty(100)
-        M3_motor.duty(100)
-        M4_motor.duty(100)
-        print("100")
-        time.sleep(1)
+        M1_motor.duty(30)
+        M2_motor.duty(30)
+        M3_motor.duty(30)
+        M4_motor.duty(30)
+        print("30")
+        time.sleep(6)
         
 
 except KeyboardInterrupt:
