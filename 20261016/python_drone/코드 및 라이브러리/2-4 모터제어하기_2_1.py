@@ -17,7 +17,7 @@ def timer_isr(t):
     flag = True
     
 timer = Timer(0)
-timer.init(period=50, mode=Timer.PERIODIC, callback=timer_isr)
+timer.init(period=100, mode=Timer.PERIODIC, callback=timer_isr)
 
 try:
     while True:
@@ -25,8 +25,8 @@ try:
             flag = False
             duty += direction
             
-        if duty >= 50:
-            duty = 50
+        if duty >= 100:
+            duty = 100
             direction = -1
         elif duty <= 20 and direction == -1:
             duty = 20
