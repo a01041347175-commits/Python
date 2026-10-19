@@ -15,11 +15,11 @@ try:
         print("0")
         time.sleep(3)
         
-        M1_motor.duty(30)
-        M2_motor.duty(30)
-        M3_motor.duty(30)
-        M4_motor.duty(30)
-        print("30")
+        M1_motor.duty(50)
+        M2_motor.duty(50)
+        M3_motor.duty(50)
+        M4_motor.duty(50)
+        print("50")
         time.sleep(6)
         
 
