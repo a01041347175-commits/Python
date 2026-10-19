@@ -1,0 +1,61 @@
+from machine import Pin, PWM, Timer
+import time
+
+M1_motor = PWM(Pin(4), freq = 10000 ,duty=0)
+M2_motor = PWM(Pin(5), freq = 10000 ,duty=0)
+M3_motor = PWM(Pin(40), freq = 10000 ,duty=0)
+M4_motor = PWM(Pin(41), freq = 10000 ,duty=0)
+
+flag = False
+isr_cnt = 0
+
+duty = 0
+direction = 1
+
+def timer_isr(t):
+    global flag
+    flag = True
+    
+timer = Timer(0)
+timer.init(period=50, mode=Timer.PERIODIC, callback=timer_isr)
+
+try:
+    while True:
+        if flag == True :
+            flag = False
+            duty += direction
+            
+        if duty >= 50:
+            duty = 50
+            direction = -1
+        elif duty <= 20 and direction == -1:
+            duty = 20
+            direction = 1
+        
+        M1_motor.duty(duty)
+        M2_motor.duty(duty)
+        M3_motor.duty(duty)
+        M4_motor.duty(duty)
+        print(duty)
+        time.sleep_ms(1)
+        
+    
+        
+
+except KeyboardInterrupt:
+    print("코드를 종료합니다.")
+
+finally:
+    timer.deinit()
+    M1_motor.duty(0)
+    M2_motor.duty(0)
+    M3_motor.duty(0)
+    M4_motor.duty(0)
+    
+    M1_motor.deinit()
+    M2_motor.deinit()
+    M3_motor.deinit()
+    M4_motor.deinit()
+    
+
+
