@@ -1,9 +1,12 @@
 import bluetooth,ble_simple_peripheral,time
 
 ble = bluetooth.BLE()
-p = ble_simple_peripheral.BLESimplePeripheral(ble,name='pyD_1234')
+p = ble_simple_peripheral.BLESimplePeripheral(ble,name='pyD_pjh')
 
 def on_rx(read):
     print("RX", read)
 
 p.on_write(on_rx)
+
+while True:
+    time.sleep(1)
