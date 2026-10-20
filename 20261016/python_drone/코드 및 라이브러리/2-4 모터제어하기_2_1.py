@@ -39,9 +39,6 @@ try:
         print(duty)
         time.sleep_ms(1)
         
-    
-        
-
 except KeyboardInterrupt:
     print("코드를 종료합니다.")
 
