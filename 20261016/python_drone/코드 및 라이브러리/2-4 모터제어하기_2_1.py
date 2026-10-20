@@ -10,7 +10,9 @@ flag = False
 isr_cnt = 0
 
 duty = 0
-direction = 1
+direction = 3
+
+last_print = time.ticks_ms()
 
 def timer_isr(t):
     global flag
@@ -27,16 +29,21 @@ try:
             
         if duty >= 100:
             duty = 100
-            direction = -1
-        elif duty <= 20 and direction == -1:
+            direction = -3
+        elif duty <= 20 and direction == -3:
             duty = 20
-            direction = 1
+            direction = 3
         
         M1_motor.duty(duty)
         M2_motor.duty(duty)
         M3_motor.duty(duty)
         M4_motor.duty(duty)
-        print(duty)
+        
+        now = time.ticks_ms()
+        if time.ticks_diff(now, last_print) >= 1000:
+            print(duty)
+            last_print = now
+        
         time.sleep_ms(1)
         
 except KeyboardInterrupt:
